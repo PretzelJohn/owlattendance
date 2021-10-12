@@ -1,0 +1,16 @@
+.center.table-responsive, .alert {
+    max-width: 768px;
+}
+.center.table-responsive {
+    margin-bottom: 100px;
+    max-width: max-content;
+}
+.center.table-responsive.full-width {
+    max-width: 100%;
+}
+.dataframe th {
+    text-align: center;
+}
+tr.align-top {
+    border-bottom: 1px solid black;
+}

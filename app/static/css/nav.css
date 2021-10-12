@@ -1,0 +1,22 @@
+nav {
+    padding: 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    background-color: #444;
+}
+
+.nav-link {
+    color: #999;
+}
+
+.nav-link:hover {
+    color: #BBB;
+    border-bottom: inset 2px orange;
+    margin-bottom: -2px;
+}
+
+.center.alert {
+    max-width: min(92%, 768px) !important;
+}

@@ -1,0 +1,33 @@
+{% extends "main/base.html" %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css" crossorigin="anonymous">
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">OwlAttendance</span>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <div class="navbar-nav me-auto mt-1">
+                        <a class="nav-link {% if title == 'Create Reports' %}active{% endif %}" href="{{ url_for('reports') }}">Create Reports</a>
+                        <a class="nav-link {% if title == 'Manage Events' %}active{% endif %}" href="{{ url_for('events') }}">Manage Events</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ current_user.username }}</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{ url_for('account') }}">Change password</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header><br>
+
+    {% include 'main/messages.html' %}
+{% endblock %}

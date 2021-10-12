@@ -1,0 +1,17 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+    <fieldset class="fieldset">
+        <legend>Attendance report</legend>
+        {% include 'main/form.html' %}
+    </fieldset>
+
+    {% if exist %}
+        <br><br>
+        <p>View the latest report <a class="alert-link" href="{{ url_for('report') }}">here</a>.</p>
+        <br><br>
+    {% endif %}
+
+    <script type="text/javascript" src="/static/js/select.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/js/checkbox.js" crossorigin="anonymous"></script>
+{% endblock %}

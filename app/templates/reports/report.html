@@ -1,0 +1,15 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="/static/css/table.css" crossorigin="anonymous">
+
+    <br>
+    <legend>Report results</legend>
+    <a class="btn btn-success btn-lg" href="{{ url_for('report_export', extension='xlsx') }}">Download Excel</a>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('report_export', extension='pdf') }}" target="_blank">Download PDF</a>
+    <a class="btn btn-danger btn-lg" href="{{ url_for('report_export', extension='html') }}" target="_blank">Download HTML</a>
+    <br><br>
+    <div class="center table-responsive">
+        {{ table }}
+    </div>
+{% endblock %}

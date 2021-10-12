@@ -1,0 +1,32 @@
+
+<form class="center needs-validation" action="" method="post" novalidate>
+    {% for field in form %}
+        {% if field.name == "csrf_token" %}
+            {{ field }}
+        {% elif field.type == "SubmitField" %}
+            <div class="d-grid gap-2">
+                {{ field(class_="btn btn-success btn-lg") }}
+            </div>
+        {% else %}
+            {% if field.type in ("CheckboxGroup") %}
+                {{ field.label(class_="form-label") }}
+                {{ field(class_="form-control checkbox", required=True) }}
+            {% elif field.type in ("BooleanField") %}
+                <div class="form-check">
+                    {{ field(class_="form-check-input") }}
+                    {{ field.label(class_="form-check-label", for="rememberMe") }}
+                </div>
+                <br>
+            {% else %}
+                <div class="form-floating">
+                    {{ field(placeholder="1", autofocus=True) }}
+                    <div class="invalid-feedback">Please enter a value.</div>
+                    {{ field.label(class_="form-label") }}
+                </div>
+            {% endif %}
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p><br>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</form>

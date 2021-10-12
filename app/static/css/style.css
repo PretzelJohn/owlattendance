@@ -1,0 +1,83 @@
+body {
+    text-align: center;
+}
+
+/* Center and style form elements */
+.btn {
+    margin: 0 2px;
+}
+
+.fieldset {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+.fieldset .field-top, .fieldset .field-mid {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.fieldset .field-bot, .fieldset .field-mid {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.fieldset .field-bot, .fieldset .field {
+    margin-bottom: 10px;
+}
+
+
+/* Validation feedback */
+.was-validated .field-bot:invalid, .was-validated .field:invalid {
+    margin: 0;
+}
+.invalid-feedback, .error {
+    text-align: left;
+    color: red;
+    margin-bottom: 10px;
+}
+
+
+/* Focus and Validation */
+.form-control, .form-select {
+    min-width: 150px;
+}
+.form-control:focus, .form-select:focus {
+    box-shadow: inset 0 2px 2px skyblue;
+}
+.form-control:valid, .form-select:valid, .checkbox {
+    box-shadow: -3px 0 0 limegreen !important;
+}
+.form-control:invalid, .form-select:invalid, .checkbox-invalid {
+    box-shadow: -3px 0 0 red !important;
+}
+.form-control:focus:valid, .form-select:focus:valid {
+    box-shadow: -6px 0 0 limegreen !important;
+    border: 1px solid limegreen !important;
+}
+.form-control:focus:invalid, .form-select:focus:invalid {
+    box-shadow: -6px 0 0 red !important;
+    border: 1px solid red !important;
+}
+
+
+/* Checkboxes */
+.checkbox {
+    text-align: left;
+    list-style: none;
+    column-count: 2;
+    column-gap: 10px;
+}
+.checkbox li {
+    direction: rtl;
+}
+.form-check {
+    text-align: left;
+    margin: 5px;
+}
+
+.center {
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+}

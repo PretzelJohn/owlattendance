@@ -1,0 +1,60 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="/static/css/table.css" crossorigin="anonymous">
+
+    <fieldset class="fieldset">
+        <legend>Create an event</legend>
+        {% include 'main/form.html' %}
+    </fieldset>
+
+    <br><br>
+    <fieldset class="center table-responsive">
+        <legend>Existing events</legend>
+        <table class="table table-striped table-bordered align-top">
+            {% if event_list[0] %}
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Date</th>
+                        <th>Save/Delete</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in event_list %}
+                        <form action="" method="post">
+                            {{ form.hidden_tag() }}
+                            <tr>
+                                <td><input class="form-control" type="text" name="event_name" value="{{ row.event_name }}" autocomplete="off" maxlength="250" required></td>
+                                <td><input class="form-control" type="date" name="event_date" value="{{ row.event_date }}" autocomplete="off" min="1950-01-01" max="2950-12-31" required></td>
+                                <td>
+                                    {% set modal_title = 'Delete event "'+row.event_name+'" ('+row.get_date()+')?' %}
+                                    {% set modal_body = 'This will also delete all attendance records for this event.' %}
+                                    {% set modal_id = row.event_id %}
+                                    {% include 'admin/modal.html' %}
+                                    <button type="submit" class="btn btn-outline-primary" name="save_{{ row.event_id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16" focusable="false">
+                                            <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ modal_id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="{{ url_for('attendance', event_id=row.event_id) }}">Manage</a>
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                    <tr><td colspan="4">Count: {{ count }}</td></tr>
+                </tbody>
+            {% else %}
+                <tr><td colspan="4">No existing events found.</td></tr>
+            {% endif %}
+        </table>
+    </fieldset>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="/static/css/splash.css">
+
+    <fieldset class="fieldset">
+        <h1>{{ head }}</h1><hr>
+        <legend>{{ body }}</legend>
+        <br><br>
+        <div class="d-grid gap-2">
+            <a class="btn btn-danger btn-lg" href="{{ url_for('index') }}">Back</a>
+        </div>
+    </fieldset>
+{% endblock %}
